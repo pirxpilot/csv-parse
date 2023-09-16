@@ -1,0 +1,28 @@
+{
+  "name": "@pirxpilot/csv-parse",
+  "version": "0.0.0",
+  "description": "The best module ever.",
+  "author": {
+    "name": "Damian Krzeminski",
+    "email": "pirxpilot@furkot.com",
+    "url": "https://pirxpilot.me"
+  },
+  "repository": "pirxpilot/csv-parse",
+  "license": "MIT",
+  "keywords": [
+    "csv",
+    "parser",
+    "webstreams"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "~2"
+  },
+  "scripts": {
+    "test": "make check"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ]
+}
