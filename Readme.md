@@ -2,22 +2,27 @@
 [![Build Status][build-image]][build-url]
 [![Dependency Status][deps-image]][deps-url]
 
-# pirxpilot-csv-parse
+# @pirxpilot/csv-parse
 
-The best module ever.
+Minimal CSV parser implemented using web `TransformStream`
 
 ## Install
 
 ```sh
-$ npm install --save pirxpilot-csv-parse
+$ npm install --save @pirxpilot/csv-parse
 ```
 
 ## Usage
 
 ```js
-var pirxpilotCsvParse = require('pirxpilot-csv-parse');
+const res = await fetch('http://example.com/cities.csv');
+const stream = res.body
+  .pipeThrough(new TextDecoderStream())
+  .pipeThrough(new CsvLineStream({ trim: true }));
 
-pirxpilotCsvParse('Rainbow');
+for await (const line of stream) {
+  console.log('Line: %s', line);
+}
 ```
 
 ## License
