@@ -1,22 +1,26 @@
 {
   "name": "@pirxpilot/csv-parse",
   "version": "0.1.0",
-  "description": "The best module ever.",
+  "description": "Minimal CSV parser implemented using web `TransformStream`",
+  "type": "module",
+  "exports": "./index.js",
   "author": {
     "name": "Damian Krzeminski",
     "email": "pirxpilot@furkot.com",
     "url": "https://pirxpilot.me"
   },
-  "repository": "pirxpilot/csv-parse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirxpilot/csv-parse.git"
+  },
   "license": "MIT",
   "keywords": [
     "csv",
     "parser",
     "webstreams"
   ],
-  "dependencies": {},
   "devDependencies": {
-    "jshint": "~2"
+    "@biomejs/biome": "^1.9.4"
   },
   "scripts": {
     "test": "make check"
