@@ -1,16 +1,13 @@
-const CsvLineStream = require('./lib/csv-line-stream');
+import { CsvLineStream } from './lib/csv-line-stream.js';
 
-module.exports = {
-  pipeThrough,
-  CsvLineStream
-};
+export { CsvLineStream };
 
 /**
  * Pipes input through stream producing Array of parsed fields
  * @param {ReadableStream} from
  * @returns readable stream
  */
-function pipeThrough(from, opts) {
+export function pipeThrough(from, opts) {
   const csvLineStream = new CsvLineStream(opts);
   return from.pipeThrough(csvLineStream);
 }

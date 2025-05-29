@@ -1,7 +1,6 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-
-const { pipeThrough } = require('..');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { pipeThrough } from '../index.js';
 
 test('empty', async () => {
   const from = ReadableStream.from([]);
