@@ -14,4 +14,3 @@ function pipeThrough(from, opts) {
   const csvLineStream = new CsvLineStream(opts);
   return from.pipeThrough(csvLineStream);
 }
-

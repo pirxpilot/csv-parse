@@ -20,56 +20,26 @@ test('single field', async () => {
   await testParser(csv, expected);
 });
 
-
 test('multiple fields', async () => {
-  const csv = [
-    'abc,def,egf',
-    'ijk,lmno'
-  ];
-  const expected = [
-    ['abc', 'def', 'egfijk', 'lmno']
-  ];
+  const csv = ['abc,def,egf', 'ijk,lmno'];
+  const expected = [['abc', 'def', 'egfijk', 'lmno']];
   await testParser(csv, expected);
 });
 
 test('multiple lines', async () => {
-  const csv = [
-    'abc,def,egf',
-    'ijk,lm\nno',
-    '111,222,333\n',
-    'pp ,, qq😅🤗\n😜🇨🇴🇬🇭q'
-  ];
-  const expected = [
-    ['abc', 'def', 'egfijk', 'lm'],
-    ['no111', '222', '333'],
-    ['pp ', '', ' qq😅🤗'],
-    ['😜🇨🇴🇬🇭q']
-  ];
+  const csv = ['abc,def,egf', 'ijk,lm\nno', '111,222,333\n', 'pp ,, qq😅🤗\n😜🇨🇴🇬🇭q'];
+  const expected = [['abc', 'def', 'egfijk', 'lm'], ['no111', '222', '333'], ['pp ', '', ' qq😅🤗'], ['😜🇨🇴🇬🇭q']];
   await testParser(csv, expected);
 });
 
 test('trim fields', async () => {
-  const csv = [
-    'abc,def,egf',
-    'ijk,lm\nno',
-    '111,222,333\n',
-    'pp ,, qq😅🤗\n😜🇨🇴🇬🇭q'
-  ];
-  const expected = [
-    ['abc', 'def', 'egfijk', 'lm'],
-    ['no111', '222', '333'],
-    ['pp', '', 'qq😅🤗'],
-    ['😜🇨🇴🇬🇭q']
-  ];
+  const csv = ['abc,def,egf', 'ijk,lm\nno', '111,222,333\n', 'pp ,, qq😅🤗\n😜🇨🇴🇬🇭q'];
+  const expected = [['abc', 'def', 'egfijk', 'lm'], ['no111', '222', '333'], ['pp', '', 'qq😅🤗'], ['😜🇨🇴🇬🇭q']];
   await testParser(csv, expected, { trim: true });
 });
 
 test('quoted fields', async () => {
-  const csv = [
-    'abc,"def","eg,f',
-    'ijk",lm\nno',
-    '111,222,333'
-  ];
+  const csv = ['abc,"def","eg,f', 'ijk",lm\nno', '111,222,333'];
   const expected = [
     ['abc', 'def', 'eg,fijk', 'lm'],
     ['no111', '222', '333']
@@ -78,11 +48,7 @@ test('quoted fields', async () => {
 });
 
 test('quoted fields with escaped quotes', async () => {
-  const csv = [
-    'abc,"d\\"ef","eg,f',
-    'ijk",lm\nno',
-    '1"11,2\\"22,333'
-  ];
+  const csv = ['abc,"d\\"ef","eg,f', 'ijk",lm\nno', '1"11,2\\"22,333'];
   const expected = [
     ['abc', 'd"ef', 'eg,fijk', 'lm'],
     ['no1"11', '2\\"22', '333']
@@ -100,4 +66,3 @@ async function testParser(csv, expected, opts) {
   }
   assert.equal(counter, expected.length);
 }
-
